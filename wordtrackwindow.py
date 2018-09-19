@@ -43,33 +43,36 @@ def analyze(text):
     words = functions.formatInputText(text)
     counts = functions.findWordCount(words)
     most = functions.findMostUsed(counts)
-    bar = functions.wordBarGraph(counts, words)
-    pie = functions.wordPieChart(counts, words)
     return most
 
 def makeBar(text):
     words = functions.formatInputText(text)
     counts = functions.findWordCount(words)
-    most = functions.findMostUsed(counts)
     bar = functions.wordBarGraph(counts, words)
     return bar
  
 def makePie(text):
     words = functions.formatInputText(text)
     counts = functions.findWordCount(words)
-    most = functions.findMostUsed(counts)
     pie = functions.wordPieChart(counts, words)
     return pie
 
 #add a page...
 class StartPage(tk.Frame):
-
     def __init__(self, parent, controller):
+        userInput = tk.StringVar()
+
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Don't repeat yourself!", font=LARGE_FONT)
         label.pack(pady=10, padx=10) #add padding
 
-        analyzeButton =ttk.Button(self, text="Analyze Text", command=lambda: analyze('hello, hello, good friend'))
+        textInput = ttk.Entry(self)
+        textInput.pack()
+
+        results = tk.Label(self, textvariable=analyze(userInput))
+        results.pack()
+
+        analyzeButton =ttk.Button(self, text="Analyze Text", command=lambda: analyze(userInput))
         analyzeButton.pack()
 
         barButton = ttk.Button(self, text="View Bar Graph", command=lambda: controller.show_frame(BarPage)) #command runs on load, so we need to get around it using lamda
@@ -118,7 +121,7 @@ class PiePage(tk.Frame):
         canvas = FigureCanvasTkAgg(f, self)
         canvas.draw()
         canvas.get_tk_widget().pack()
-        
+
         backButton = ttk.Button(self, text="Back to Home", command=lambda: controller.show_frame(StartPage)) 
         backButton.pack()
 
