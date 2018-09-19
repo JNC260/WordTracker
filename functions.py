@@ -89,4 +89,15 @@ def wordBarGraph(dict, list):
 
 def wordPieChart(dict, list):
     
+    labels = [] #initalize labels and values
+    values = []
     minCount = round(len(list)*0.01) #filters out words used less than one percent of total word count (i.e: for 100 words, words used more than once)
+    
+    for word, count in dict.items():
+        if count > minCount:
+            labels.append(word) #add word to labels
+            values.append(count) #and count to values
+
+    wordPie = ply.pie(values, labels=labels)
+
+    return wordPie
