@@ -67,8 +67,26 @@ def findMostUsed(dict):
 
     return "The word used the most in this text is "+word+". It was used "+count+" times."
 
-
+#use word list and dictionary to create a bar graph
 def wordBarGraph(dict, list):
+    x = [] #initalize x and y values
+    y = []
+    minCount = round(len(list)*0.01) #filters out words used less than one percent of total word count (i.e: for 100 words, words used more than once)
+    
+    for word, count in dict.items():
+        if count > minCount:
+            x.append(word) #add word to x values
+            y.append(count) #and count to y values
+    
+    wordBar = plt.bar(x,y) #create bar graph
+    plt.title('Word Usage')
+    plt.xlabel('Words')
+    plt.xticks(rotation=90)
+    plt.ylabel('Frequency')
+    
+    return wordBar
 
- minCount = round(len(list)*0.01) #filters out words used less than one percent of total word count (i.e: for 100 words, words used more than once)
 
+def wordPieChart(dict, list):
+    
+    minCount = round(len(list)*0.01) #filters out words used less than one percent of total word count (i.e: for 100 words, words used more than once)
