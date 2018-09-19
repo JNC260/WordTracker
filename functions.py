@@ -75,13 +75,7 @@ def wordBarGraph(dict, list):
             x.append(word) #add word to x values
             y.append(count) #and count to y values
     
-    wordBar = plt.bar(x,y) #create bar graph
-    plt.title('Word Usage')
-    plt.xlabel('Words')
-    plt.xticks(rotation=90)
-    plt.ylabel('Frequency')
-    
-    return wordBar
+    return {"x":x, "y":y}
 
 
 def wordPieChart(dict, list):
@@ -95,6 +89,4 @@ def wordPieChart(dict, list):
             labels.append(word) #add word to labels
             values.append(count) #and count to values
 
-    wordPie = plt.pie(values, labels=labels)
-
-    return wordPie  #why showing two blue bars behind chart?  how to make bar labels not show up
+    return {"labels":labels, "values":values}
