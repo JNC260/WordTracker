@@ -65,7 +65,7 @@ def findMostUsed(dict):
             most = word
             largestCount = count
 
-    return "The word used the most in this text is "+word+". It was used "+count+" times."
+    return "The most used word in the text is '%s'. It was used %d times." % (most, largestCount)
 
 #use word list and dictionary to create a bar graph
 def wordBarGraph(dict, list):
@@ -98,6 +98,6 @@ def wordPieChart(dict, list):
             labels.append(word) #add word to labels
             values.append(count) #and count to values
 
-    wordPie = ply.pie(values, labels=labels)
+    wordPie = plt.pie(values, labels=labels)
 
-    return wordPie
+    return wordPie  #why showing two blue bars behind chart?  how to make bar labels not show up
