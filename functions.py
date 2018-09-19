@@ -20,6 +20,7 @@ def formatFileText(file):
         else:
             fixedWord = re.findall(r'[a-z]*', lower) #filter out punctuation or whitespace, returns a list with a length of 1
             wordList.append(fixedWord[0]) #add item in list to the wordList    
+    return wordList
 
 #format words from text input
 def formatInputText(text):
@@ -32,5 +33,16 @@ def formatInputText(text):
         else:
             fixedWord = re.findall(r'[a-z]*', lower) #filter out punctuation or whitespace, returns a list with a length of 1
             wordList.append(fixedWord[0]) #add item in list to the wordList      
+    return wordList        
 
+#build dictionary with word list with counts
+def findWordCount(list){
+    wordCount = {} #initialize empty dictionary, keys will be words, values will be the count
+    for word in list:
+        if word not in wordCount:
+            wordCount[word] = 1 #add to dictionary and set count to 1
+        else:
+            wordCount[word] = wordCount[word] + 1 #if its there, increase the count by one
+    return wordCount
+}
 
