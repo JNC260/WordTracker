@@ -1,11 +1,11 @@
 import functions
 from matplotlib import pyplot as plt 
 
-text = "I would like to acknowledge that I like an elephant a lot.  My favorite land animal is the elephant because the elephant is a large and gentle creature that feels like humans do.  I wish I could ride an elephant."
+text = "I would've like to acknowledge's that I like an elephant a lot.  My favorite land animal is the elephant because the elephant is a large and gentle creature that feels like humans do.  I wish I could ride an elephant."
 
 words = functions.formatInputText(text)
 
-#print(words)
+print(words)
 
 counts = functions.findWordCount(words)
 
@@ -17,7 +17,7 @@ most = functions.findMostUsed(counts)
 
 bar = functions.wordBarGraph(counts, words)
 
-plt.show(bar)
+#plt.show(bar)
 
 pie = functions.wordPieChart(counts, words)
 

@@ -1,12 +1,9 @@
 import re
 from matplotlib import pyplot as plt 
 from matplotlib import style
+from stop_words import get_stop_words
 
-exceptions = {
-    "the": 1, "be": 2, "to": 3, "of": 4, "and": 5,
-    "a": 6, "in": 7, "that": 8, "have": 9, "i": 10,
-    "it": 11, "for": 12, "not": 13, "on": 14, "with": 15
-}
+stop_words = get_stop_words('english')
 
 #format words from a file
 def formatFileText(file):
@@ -17,10 +14,10 @@ def formatFileText(file):
 
     for word in words:
         lower = word.lower() #make all words lowercase for more accurate counting
-        if lower in exceptions: #dont count top 15 most common words
+        if lower in stop_words: #dont count most used words
             wordList = wordList
         else:
-            fixedWord = re.findall(r'[a-z]*', lower) #filter out punctuation or whitespace, returns a list with a length of 1
+            fixedWord = re.findall(r"[a-z]*", lower) #filter out punctuation or whitespace, returns a list with a length of 1
             wordList.append(fixedWord[0]) #add item in list to the wordList  
 
     return wordList
@@ -33,10 +30,10 @@ def formatInputText(text):
 
     for word in words:
         lower = word.lower() #make all words lowercase for more accurate counting
-        if lower in exceptions: #dont count top 15 most common words
+        if lower in stop_words: #dont count most common words
             wordList = wordList
         else:
-            fixedWord = re.findall(r'[a-z]*', lower) #filter out punctuation or whitespace, returns a list with a length of 1
+            fixedWord = re.findall(r"[a-z]*", lower) #filter out punctuation or whitespace, returns a list with a length of 1
             wordList.append(fixedWord[0]) #add item in list to the wordList  
 
     return wordList        
