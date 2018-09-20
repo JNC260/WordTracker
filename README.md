@@ -6,7 +6,7 @@ Word Tracker is my first Python app and is designed to help writers analyze text
 
 1. Clone or copy this repository
 2. Run wordTracker.py from the terminal of your machine or your favorite code editor. 
-<img width=500 style="border:2px solid black" src="https://github.com/JNC260/WordTracker/blob/master/screenshots/RunProgram.png" alt="Run Program">
+<div style="border:2px solid black"><img width=500 src="https://github.com/JNC260/WordTracker/blob/master/screenshots/RunProgram.png" alt="Run Program"></div>
 3. Enter text to be analyzed in the graphical user interface that pops up. 
 <img width=500 style="border:2px solid black" src="https://github.com/JNC260/WordTracker/blob/master/screenshots/PopupApp.png" alt="Popup App">
 
