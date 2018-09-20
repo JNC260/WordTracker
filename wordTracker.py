@@ -25,15 +25,11 @@ class WordTrackApp(tk.Tk): #input tk inheritance in parentheses
 
         self.frames = {}
 
-        for F in (StartPage, BarPage, PiePage):
+        frame = StartPage(container, self)
 
-            frame = F(container, self)
+        self.frames[StartPage] = frame
 
-            self.frames[F] = frame
-
-            frame.grid(row=0, column=0, sticky="nsew") #sticky is like alignment +stretch nsew (north, south, east, west)
-
-        self.show_frame(StartPage)
+        frame.grid(row=0, column=0, sticky="nsew")
 
     def show_frame(self, cont):
         frame = self.frames[cont]
@@ -53,57 +49,32 @@ class StartPage(tk.Frame):
 
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Don't repeat yourself!", font=LARGE_FONT)
-        label.pack(pady=10, padx=10) #add padding
+        label.grid(row=0, column=3, pady=10, padx=10) #add padding
 
         def analyze(text):
             words = functions.formatInputText(text)
             counts = functions.findWordCount(words)
             most = functions.findMostUsed(counts)
-            tk.Label(self, text = most).pack()
+            tk.Label(self, text = most).grid(row=2,column=2, columnspan=3)
 
         textInput = ttk.Entry(self)
-        textInput.pack()
+        textInput.grid(column=2,row=1, columnspan=3)
         self.text = textInput.get()
 
         analyzeButton =ttk.Button(self, text="Analyze Text", command=lambda: analyze(textInput.get()))
-        analyzeButton.pack()
+        analyzeButton.grid(column=3,row=3)
 
-        barButton = ttk.Button(self, text="View Bar Graph", command=lambda: controller.show_frame(BarPage)) #command runs on load, so we need to get around it using lamda
-        barButton.pack()
+        barButton = ttk.Button(self, text="View Bar Graph", command=lambda: makeBar(textInput.get())) #command runs on load, so we need to get around it using lamda
+        barButton.grid(column=0,row=4)
 
-        pieButton = ttk.Button(self, text="View Pie Chart", command=lambda: controller.show_frame(PiePage))
-        pieButton.pack()
-
-class BarPage(tk.Frame):
-
-    def __init__(self, parent, controller):
-
-        self.controller = controller
-
-        tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Word Frequency", font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
+        pieButton = ttk.Button(self, text="View Pie Chart", command=lambda: makePie(textInput.get()))
+        pieButton.grid(column=5,row=4)
         
-        def getText():
-            startPage = self.controller.access_page("StartPage")
-            text = startPage.text
-            return text
-        
-        # barText = getText()
 
-        showGraphButton = ttk.Button(self, text="Show Graph", command=lambda: makeBar(getText()))
-        showGraphButton.pack()
-
-        backButton = ttk.Button(self, text="Back to Home", command=lambda: controller.show_frame(StartPage)) 
-        backButton.pack()
-        
         def makeBar(text):
             words = functions.formatInputText(text)
-            print(words)
             counts = functions.findWordCount(words)
-            print(counts)
             values = functions.wordBarGraph(counts, words)
-            print(values)
             x = values["x"]
             y = values["y"]
 
@@ -111,41 +82,25 @@ class BarPage(tk.Frame):
             ax = f.add_subplot(111)
             myBar = ax.bar(x, y)
 
-            canvas = FigureCanvasTkAgg(f, self)
-            canvas.draw()
-            canvas.get_tk_widget().pack()
-
-class PiePage(tk.Frame):
-
-    def __init__(self, parent, controller):
-
-        self.controller = controller
-
-        tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Word Frequency", font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
+            barCanvas = FigureCanvasTkAgg(f, self)
+            barCanvas.draw()
+            barCanvas.get_tk_widget().grid(column=3, row=5)
 
         def makePie(text):
             words = functions.formatInputText(text)
             counts = functions.findWordCount(words)
-            pie = functions.wordPieChart(counts, words)
-            return pie
+            data = functions.wordPieChart(counts, words)
+            labels = data["labels"]
+            values = data["values"]
 
-        data = makePie('She loves me yea yea yea')
-        labels = data["labels"]
-        values = data["values"]
+            f = Figure()
+            ax = f.add_subplot(111)
+            myPie = ax.pie(values, labels=labels)
 
-        f = Figure()
-        ax = f.add_subplot(111)
-        myPie = ax.pie(values, labels=labels)
+            pieCanvas = FigureCanvasTkAgg(f, self)
+            pieCanvas.draw()
+            pieCanvas.get_tk_widget().grid(column=3,row=5)
 
-        canvas = FigureCanvasTkAgg(f, self)
-        canvas.draw()
-        canvas.get_tk_widget().pack()
-
-        backButton = ttk.Button(self, text="Back to Home", command=lambda: controller.show_frame(StartPage)) 
-        backButton.pack()
-        
 #tkinter code...
 app = WordTrackApp()
 app.mainloop()
