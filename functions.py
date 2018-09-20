@@ -35,7 +35,7 @@ def formatInputText(text):
         else:
             fixedWord = re.findall(r"[a-z]*", lower) #filter out punctuation or whitespace, returns a list with a length of 1
             wordList.append(fixedWord[0]) #add item in list to the wordList  
-
+    print(wordList)
     return wordList        
 
 #build dictionary with word list with counts
@@ -48,7 +48,7 @@ def findWordCount(list):
             wordCount[word] = 1 #add to dictionary and set count to 1
         else:
             wordCount[word] = wordCount[word] + 1 #if its there, increase the count by one
-
+    print(wordCount)
     return wordCount
 
 #find most used word and its count from a dictonary of words and counts and a list of words

@@ -55,9 +55,11 @@ class StartPage(tk.Frame):
             most = functions.findMostUsed(counts)
             tk.Label(self, text = most, font=HEADING_FONT, pady=5).grid(row=3,column=2, columnspan=3)
 
-        textInput = tk.Text(self, height=3, yscrollcommand=scrollbar.set, background="lightgray", font=LARGE_FONT)
+        textInput = tk.Text(self, height=3, yscrollcommand=scrollbar.set, background="lightgray", font=LARGE_FONT, wrap=tk.WORD)
         textInput.grid(column=2,row=2, columnspan=3)
         scrollbar.config(command=textInput.yview)
+
+        print(textInput.get(1.0,"end"))
 
         analyzeButton =ttk.Button(self, text="Analyze Text", command=lambda: analyze(textInput.get(1.0, "end")))
         analyzeButton.grid(column=3,row=4,pady=5, padx=5)
@@ -94,7 +96,7 @@ class StartPage(tk.Frame):
 
             f = Figure(figsize=(4,4))
             ax = f.add_subplot(111)
-            myPie = ax.pie(values, labels=labels)
+            ax.pie(values, labels=labels)
 
             pieCanvas = FigureCanvasTkAgg(f, self)
             pieCanvas.draw()
