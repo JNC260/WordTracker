@@ -78,6 +78,7 @@ class StartPage(tk.Frame):
 
             f = Figure(figsize=(4,4))
             ax = f.add_subplot(111)
+            ax.set_xticklabels(x, rotation=45, fontsize="x-small")
             ax.bar(x, y, align="center")
 
             barCanvas = FigureCanvasTkAgg(f, self)
