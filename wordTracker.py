@@ -47,7 +47,7 @@ class StartPage(tk.Frame):
 
         scrollbar = tk.Scrollbar(self)
         scrollbar.grid(column=1, row=2, sticky="nse")
-       
+        
 
         def analyze(text):
             words = functions.formatInputText(text)
