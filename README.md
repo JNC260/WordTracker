@@ -6,27 +6,27 @@ Word Tracker is my first Python app and is designed to help writers analyze text
 
 1. Clone or copy this repository
 2. Run wordTracker.py from the terminal of your machine or your favorite code editor. 
-<img width=500 src="https://github.com/JNC260/WordTracker/blob/master/screenshots/RunProgram.png" alt="Run Program">
+<img width=500 style="border:2px solid black" src="https://github.com/JNC260/WordTracker/blob/master/screenshots/RunProgram.png" alt="Run Program">
 3. Enter text to be analyzed in the graphical user interface that pops up. 
-<img width=500 src="https://github.com/JNC260/WordTracker/blob/master/screenshots/PopupApp.png" alt="Popup App">
+<img width=500 style="border:2px solid black" src="https://github.com/JNC260/WordTracker/blob/master/screenshots/PopupApp.png" alt="Popup App">
 
 ## Features
 
 Users can paste or type in text to be analyzed.
 
-<img width=500 src="https://github.com/JNC260/WordTracker/blob/master/screenshots/EnterText.png" alt="Enter Text">
+<img width=500 style="border:2px solid black" src="https://github.com/JNC260/WordTracker/blob/master/screenshots/EnterText.png" alt="Enter Text">
 
 Clicking the "Analyze Text" displays the most-used word and its frequency.
 
-<img width=500 src="https://github.com/JNC260/WordTracker/blob/master/screenshots/Analyze.png" alt="Analyze Text">
+<img width=500 style="border:2px solid black" src="https://github.com/JNC260/WordTracker/blob/master/screenshots/Analyze.png" alt="Analyze Text">
 
 Clicking "View Bar Graph" displays a bar graph of all words used with a frequency greater than 1% of the total word count. Users can see other commonly used words from there text here.
 
-<img width=500 src="https://github.com/JNC260/WordTracker/blob/master/screenshots/BarGraph.png" alt="View Bar">
+<img width=500 style="border:2px solid black" src="https://github.com/JNC260/WordTracker/blob/master/screenshots/BarGraph.png" alt="View Bar">
 
 Clicking "View Pie Chart" displays a pie chart of all words used with a frequency greater than 1% of the total word count and provides another way for users to see which words occupy most of their text.
 
-<img width=500 src="https://github.com/JNC260/WordTracker/blob/master/screenshots/PieChart.png" alt="View Pie">
+<img width=500 style="border:2px solid black" src="https://github.com/JNC260/WordTracker/blob/master/screenshots/PieChart.png" alt="View Pie">
 
 **Technology Used**: This app was created using Python, tkinter, and matplotlib in 3 days.
 
