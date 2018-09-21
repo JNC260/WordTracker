@@ -1,0 +1,2 @@
+matplotlib
+stop_words
