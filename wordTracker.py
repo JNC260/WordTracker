@@ -59,8 +59,6 @@ class StartPage(tk.Frame):
         textInput.grid(column=2,row=2, columnspan=3)
         scrollbar.config(command=textInput.yview)
 
-        print(textInput.get(1.0,"end"))
-
         analyzeButton =ttk.Button(self, text="Analyze Text", command=lambda: analyze(textInput.get(1.0, "end")))
         analyzeButton.grid(column=3,row=4,pady=5, padx=5)
 
